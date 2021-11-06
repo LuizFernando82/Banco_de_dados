@@ -1,0 +1,99 @@
+ Exercicio
+ ------------- 1 ----------------
+1FN
+Empregado(Nro_Emp, Nome_Emp,Nro_Deto, Nome_Depto,
+Nro_Gerente, Nome_Gerente,Nro_proj, Nome_proj,
+Inicio_proj,Nro_horas_trabalhadas_proj)
+
+2FN
+Empregado(#Nro_Emp, Nome_Emp,#Nro_Deto, Nome_Depto,
+#Nro_Gerente, Nome_Gerente,#Nro_proj, Nome_proj,
+Inicio_proj,Nro_horas_trabalhadas_proj
+
+3FN
+Empregado (#Nro_Emp, Nome_Emp,$Nro_Deto)
+Gerente (#Nro_Gerente, Nome_Gerente)
+Proj (#Nro_proj, Nome_proj,Inicio_proj)
+Emp_Proj(#id,$Nro_Emp,$Nome_proj,Nro_horas_trabalhadas_proj
+
+------------- 2 ----------------
+
+1FN
+vendendor ( nro_vend, nome_vend, sexo_vend)
+cliente (nro_cli, nome_cli, end_cli)
+ 
+2FN
+vendedor(#nro_vend,nome,sexo)
+cliente(#nro,nome,end)
+end_cli(#id,$nro_cli,uf,cidade,rua,nro_casa)
+vend-cli(#id,$nro_vend,$nro_cli)
+
+3FN
+vendedor(#nro_vend,nome,sexo)
+cliente(#nro,nome,$id_end)
+end_cli(#id_end,$nro_cli,uf,cidade,rua,nro_casa)
+vend-cli(#id,$nro_vend,$nro_cli)
+
+------------- 3 ----------------
+
+1FN
+Aluno (nro_aluno,cod_depto, nome_depto,sigla_dpto,
+cod_orient, nome_orient,fone_orient, cod_curso)
+
+2FN
+Aluno (#nro_aluno,#cod_depto, nome_depto,sigla_dpto,
+#cod_orient, nome_orient,fone_orient, #cod_curso)
+
+3FN
+aluno(#nro_alu,$cod_depto,$cod_ori,$cod_curso)
+depto(#cod_depto,nome,sigla)
+oriet(#cod_ori,nome,fone_1,fone_2)
+curso(#cod_curso)
+
+------------- 4 ------------------
+
+1FN
+Funcionario(matricula,nome,data_nasc, nacionalidade,sexo,
+est_civil, rg, cic, fone, data_adm)
+End_funcionario(rua,nro,cidade,uf,bairo,cep)
+Cargos_Ocup_Func(cargo,data_inc, data_fim_)
+Dependentes(nome_dep, data_nasc,)
+
+2FN
+Funcionario(#matricula,nome,data_nasc, nacionalidade,sexo,
+est_civil, rg, cic, fone, data_adm)
+end_funcionario(#id_end,rua,nro,cidade,uf,bairo,cep)
+Cargos_Ocup_Func(#id_cargo,data_inc, data_fim)
+Dependente(#id_dep,nome_dep_1, data_nasc_1,)
+
+3FN
+Funcionario(#matricula,nome,data_nasc, nacionalidade,sexo,
+Est_civil, rg, cic, fone, data_adm, $id_end)
+End_funcionario(#id_end,rua,nro,cidade,uf,bairo,cep)
+Cargos_Ocup_Func(#id_cargo,data_inc, data_fim,$matricula_fun)
+Dependente(#id_dep,nome_dep_1, data_nasc_1,$matricula_fun)
+
+------------- 5 ----------------
+
+1FN
+Paciente(nro_pac,nome_pac,data_nac, sexo_pac, convenio, est_civil,rg, fone)
+End_Paciente(rua,nro,cidade,uf,0bairo,cep)
+Consultas(nro_consulta,data)
+Exames(exame,data)
+Medico(nome,crm)
+
+2FN
+Paciente(#nro_pac, nome_pac, data_nac,sexo_pac, convenio,
+est_civil,rg, fone)
+End_paciente (id_end_pac,rua,nro,cidade,uf,0bairo,cep)
+Consultas(#nro_consulta,data, diagnostico)
+Medico(#id_med,nome_med,crm)
+Exames(#id_ex, exame,data)
+
+3FN
+Paciente(#nro_pac, nome_pac, data_nac,sexo_pac, convenio,
+est_civil,rg, fone,$id_end_pac)
+End_paciente (id_end_pac,rua,nro,cidade,uf,0bairo,cep)
+Consultas(#nro_consulta,data, diagnostico,$nro_pac,$id_med,#id_ex)
+Medico(#id_med,nome_med,crm)
+Exames(#id_ex, exame,data)
